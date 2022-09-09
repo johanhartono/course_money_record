@@ -5,7 +5,8 @@ import '../model/user.dart';
 
 import 'package:d_info/d_info.dart';
 
-//fungsi class SourceUser adalah untuk mengirimakan paramater ke php backend
+//fungsi class SourceUser adalah mendapatkan value dari Front End Flutter dan 
+// untuk mengirimkan paramater ke php backend
 class SourceUser {
   static Future<bool> login(String email, String password) async {
     String url = '${Api.user}/login.php';

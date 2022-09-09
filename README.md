@@ -20,7 +20,8 @@ Back End (menggunakan mysql dan php)
 predefined script query my sql create,insert,update,delete
 
 Front End (menggunakan flutter)
-0. Setting Data Model Json menggunakan web biar cepat
+
+0. Setting Data Model Json menggunakan predefined dari web biar cepat
 https://app.quicktype.io/
 
 1. Bermula dari Main.dart
