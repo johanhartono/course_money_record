@@ -1,10 +1,11 @@
 import 'package:course_money_record/config/api.dart';
 import 'package:course_money_record/config/app_request.dart';
 import 'package:course_money_record/config/session.dart';
-import 'package:d_info/d_info.dart';
-
 import '../model/user.dart';
 
+import 'package:d_info/d_info.dart';
+
+//fungsi class SourceUser adalah untuk mengirimakan paramater ke php backend
 class SourceUser {
   static Future<bool> login(String email, String password) async {
     String url = '${Api.user}/login.php';
@@ -13,9 +14,9 @@ class SourceUser {
       'password': password,
     });
 
-    if (responseBody == null) return false;
-
-    if (responseBody['success']) {
+    if (responseBody == null) {
+      return false;
+    } else if (responseBody['success']) {
       var mapUser = responseBody['data'];
       Session.saveUser(User.fromJson(mapUser));
     }
@@ -24,7 +25,7 @@ class SourceUser {
   }
 
   static Future<bool> register(
-    String name, String email, String password) async {
+      String name, String email, String password) async {
     String url = '${Api.user}/register.php';
     Map? responseBody = await AppRequest.post(url, {
       'name': name,
@@ -34,9 +35,9 @@ class SourceUser {
       'updated_at': DateTime.now().toIso8601String(),
     });
 
-    if (responseBody == null) return false;
-
-    if (responseBody['success']) {
+    if (responseBody == null) {
+      return false;
+    } else if (responseBody['success']) {
       DInfo.dialogSuccess('Berhasil Register');
       DInfo.closeDialog();
     } else {

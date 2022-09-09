@@ -1,11 +1,13 @@
 import 'dart:convert';
-import 'package:course_money_record/data/model/user.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../presentation/controller/c_user.dart';
+import 'package:course_money_record/data/model/user.dart';
 
+//Session.dart dipanggil saat main.dart dijalankan menggunakan widget Futurebulider
+//session.getUser()
 class Session {
+  //1. Berfungsi untuk menyimpan sesi user saat login
   static Future<bool> saveUser(User user) async {
     final pref = await SharedPreferences.getInstance();
     Map<String, dynamic> mapUser = user.toJson();
@@ -18,6 +20,8 @@ class Session {
     return success;
   }
 
+  //2. Berfungsi untuk memanggil sesi user yang tersimpan untuk mengecek
+  //status login apabila belum ada makan akan diarahkan ke halaman login
   static Future<User> getUser() async {
     User user = User(); // default value
     final pref = await SharedPreferences.getInstance();
@@ -31,6 +35,7 @@ class Session {
     return user;
   }
 
+//3. Berfungsi untuk mereset sesi user yang tersimpan saat logout
   static Future<bool> clearUser() async {
     final pref = await SharedPreferences.getInstance();
     bool success = await pref.remove('user');
