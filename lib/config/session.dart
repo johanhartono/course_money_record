@@ -7,7 +7,7 @@ import 'package:course_money_record/data/model/user.dart';
 //Session.dart dipanggil saat main.dart dijalankan menggunakan widget Futurebulider
 //session.getUser()
 class Session {
-  //1. Berfungsi untuk menyimpan sesi user saat login
+  //1. Berfungsi untuk menyimpan sesi user saat login.dart
   static Future<bool> saveUser(User user) async {
     final pref = await SharedPreferences.getInstance();
     Map<String, dynamic> mapUser = user.toJson();
@@ -20,7 +20,7 @@ class Session {
     return success;
   }
 
-  //2. Berfungsi untuk memanggil sesi user yang tersimpan untuk mengecek
+  //2. Berfungsi untuk memanggil sesi user yang sudah tersimpan terus mengecek
   //status login apabila belum ada makan akan diarahkan ke halaman login
   static Future<User> getUser() async {
     User user = User(); // default value
