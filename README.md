@@ -31,5 +31,10 @@ session.dart memanggil data model di folder lib\model\user.dart dan passin value
 main.dart akan  mengecek session user dan password apakah terisi atau kosong, apabila terisi makan sistem akan mengarahkan ke
 halaman homepage.dart apabila tidak maka akan ke halaman login.dart
 
-2.
+2. Login.Dart
+memanggil lib\data\source\source_user.dart (untuk passing paramater dari textbox UI) , kemudian memanggil lib\api\app_request.dart (post or get pass data json ke backend php)
+terakhir memanggil lib\config\session.dart (untuk menyimpan data sementara alias session variabel dari hasil posting)
+
+3. HomePage.dart
+
 

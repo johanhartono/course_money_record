@@ -1,6 +1,8 @@
 import 'package:course_money_record/data/model/user.dart';
 import 'package:get/get.dart';
 
+// class CUser sebenaranya adalah contoh dari getter dan setter
+//mengcopy data dari data model kemudian di set value ke CUSer.data
 class CUser extends GetxController {
   final _data = User().obs;
   User get data => _data.value;
