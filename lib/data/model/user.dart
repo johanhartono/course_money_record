@@ -1,4 +1,11 @@
 class User {
+  String? idUser;
+  String? name;
+  String? email;
+  String? password;
+  String? createdAt;
+  String? updatedAt;
+
   User({
     this.idUser,
     this.name,
@@ -7,13 +14,6 @@ class User {
     this.createdAt,
     this.updatedAt,
   });
-
-  String? idUser;
-  String? name;
-  String? email;
-  String? password;
-  String? createdAt;
-  String? updatedAt;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         idUser: json["id_user"],

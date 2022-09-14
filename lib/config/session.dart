@@ -4,6 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../presentation/controller/c_user.dart';
 import 'package:course_money_record/data/model/user.dart';
 
+//shared preferences  artinya penyimpanan data secara lokal/atau disebut dengan
+//temporary table
+
 //Session.dart dipanggil saat main.dart dijalankan menggunakan widget Futurebulider
 //session.getUser()
 class Session {

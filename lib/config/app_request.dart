@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:d_method/d_method.dart';
 import 'package:http/http.dart' as http;
 
-//Fungsi class AppRequest adalah untuk Post dan gets Passing Parameter melalui
+//Coding disini adalah standar
+//Fungsi class AppRequest adalah untuk POST dan GET Passing Parameter melalui
 //JSON
 class AppRequest {
   static Future<Map?> gets(String url, {Map<String, String>? headers}) async {
@@ -18,8 +19,7 @@ class AppRequest {
     }
   }
 
-  static Future<Map?> post(String url, Object? body,
-      {Map<String, String>? headers}) async {
+  static Future<Map?> post(String url, Object? body,{Map<String, String>? headers}) async {
     try {
       http.Response response = await http.post(
         Uri.parse(url),
