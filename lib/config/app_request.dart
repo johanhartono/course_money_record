@@ -19,7 +19,8 @@ class AppRequest {
     }
   }
 
-  static Future<Map?> post(String url, Object? body,{Map<String, String>? headers}) async {
+  static Future<Map?> post(String url, Object? body,
+      {Map<String, String>? headers}) async {
     try {
       http.Response response = await http.post(
         Uri.parse(url),

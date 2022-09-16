@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+//
 import 'package:course_money_record/config/app_asset.dart';
 import 'package:course_money_record/config/app_color.dart';
 import 'package:course_money_record/data/source/source_user.dart';
@@ -5,21 +8,28 @@ import 'package:course_money_record/presentation/page/auth/register_page.dart';
 import 'package:course_money_record/presentation/page/home_page.dart';
 import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
+//-----------Code by default jangan diganggu--------------------------------
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+//-----------Code by default jangan diganggu--------------------------------
 
 class _LoginPageState extends State<LoginPage> {
+  //Definisikan Variable - Mapping UI Text to Controller
   final controllerEmail = TextEditingController();
   final controllerPassword = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
+  //Login Function
   login() async {
+    //To make apps secure and easy to use, check whether the information the user has
+    //provided is valid. If the user has correctly filled out the form, process the information.
+    //If the user submits incorrect information, display a friendly error message letting them
+    //know what went wrong
     if (formKey.currentState!.validate()) {
       bool success = await SourceUser.login(
         controllerEmail.text,
@@ -41,10 +51,13 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.bg,
+      //Layout Builder auto adjust size of screen or means Responsive
       body: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(
+            //supaya tampilan tidak terputus
             child: ConstrainedBox(
+              //prevent Soft keyboard overwhelming
               constraints: BoxConstraints(
                 minHeight: constraints.maxHeight,
               ),
@@ -52,14 +65,18 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   DView.nothing(),
+                  //-------------------------------Form--------------------------------------
                   Form(
                     key: formKey,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Column(
                         children: [
+                          //-------------------------------Logo------------------------------
                           Image.asset(AppAsset.logo),
+                          //-------------------------------Logo------------------------------
                           DView.spaceHeight(40),
+                          //-------------------------------Email-----------------------------
                           TextFormField(
                             controller: controllerEmail,
                             validator: (value) =>
@@ -82,7 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
+                          //-------------------------------Email-----------------------------
                           DView.spaceHeight(),
+                          //-------------------------------Password--------------------------
                           TextFormField(
                             controller: controllerPassword,
                             validator: (value) =>
@@ -106,7 +125,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
+                          //-------------------------------Password--------------------------
                           DView.spaceHeight(30),
+                          //-------------------------------Button Login----------------------
                           Material(
                             color: AppColor.primary,
                             borderRadius: BorderRadius.circular(30),
@@ -126,19 +147,26 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
+                          //-------------------------------Button Login----------------------
                         ],
                       ),
                     ),
                   ),
+                  //-------------------------------Form--------------------------------------
+
+                  //---------------------Belum Punya Akun?Register---------------------------
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        //-----------------------Belum Punya Akun---------------------------
                         const Text(
                           'Belum punya akun? ',
                           style: TextStyle(fontSize: 16),
                         ),
+                        //-----------------------Belum Punya Akun---------------------------
+                        //-----------------------Register-----------------------------------
                         GestureDetector(
                           onTap: () {
                             Get.to(() => const RegisterPage());
@@ -152,9 +180,11 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
+                        //-----------------------Register------------------------------------
                       ],
                     ),
                   ),
+                  //---------------------Belum Punya Akun?Register---------------------------
                 ],
               ),
             ),

@@ -1,6 +1,5 @@
 import 'package:course_money_record/config/app_format.dart';
 import 'package:course_money_record/data/source/source_history.dart';
-import 'package:course_money_record/presentation/page/history/update_history_page.dart';
 import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,6 @@ import '../../../config/app_color.dart';
 import '../../../data/model/history.dart';
 import '../../controller/c_user.dart';
 import '../../controller/history/c_history.dart';
-import '../../controller/history/c_income_outcome.dart';
 import 'detail_history_page.dart';
 
 class HistoryPage extends StatefulWidget {

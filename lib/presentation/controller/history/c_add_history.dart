@@ -11,13 +11,16 @@ class CAddHistory extends GetxController {
   setType(n) => _type.value = n;
 
   final _items = [].obs;
+  // ignore: invalid_use_of_protected_member
   List get items => _items.value;
   addItem(n) {
+    // ignore: invalid_use_of_protected_member
     _items.value.add(n);
     count();
   }
 
   deleteItem(i) {
+    // ignore: invalid_use_of_protected_member
     _items.value.removeAt(i);
     count();
   }

@@ -17,6 +17,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $user[] = $row;
     }
+    echo $sql;
     echo json_encode(array(
         "success" => true,
         "data" => $user[0]    
