@@ -5,24 +5,30 @@ import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+//-----------Code by default jangan diganggu--------------------------------
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
+//-----------Code by default jangan diganggu--------------------------------
 
 class _RegisterPageState extends State<RegisterPage> {
+//Definisikan Variable - Mapping UI Text to Controller
   final controllerName = TextEditingController();
   final controllerEmail = TextEditingController();
   final controllerPassword = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
+//Register Function
   register() async {
     if (formKey.currentState!.validate()) {
       await SourceUser.register(
         controllerName.text,
         controllerEmail.text,
         controllerPassword.text,
+        //Mungkin bisa tambah konfirmasi password
       );
     }
   }
@@ -48,8 +54,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Column(
                         children: [
+                          //-------------------------------Logo------------------------------
                           Image.asset(AppAsset.logo),
+                          //-------------------------------Logo------------------------------
                           DView.spaceHeight(40),
+                          //-------------------------------Email-----------------------------
                           TextFormField(
                             controller: controllerName,
                             validator: (value) =>
@@ -72,7 +81,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                           ),
+                          //-------------------------------Name-----------------------------
                           DView.spaceHeight(),
+                          //-------------------------------Email-----------------------------
                           TextFormField(
                             controller: controllerEmail,
                             validator: (value) =>
@@ -95,7 +106,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                           ),
+                          //-------------------------------Email-----------------------------
                           DView.spaceHeight(),
+                          //-------------------------------Password--------------------------
                           TextFormField(
                             controller: controllerPassword,
                             validator: (value) =>
@@ -119,7 +132,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                           ),
+                          //-------------------------------Password--------------------------
                           DView.spaceHeight(30),
+                          //-------------------------------Register button ------------------
                           Material(
                             color: AppColor.primary,
                             borderRadius: BorderRadius.circular(30),
@@ -139,10 +154,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                           ),
+                          //-------------------------------Register button ------------------
                         ],
                       ),
                     ),
                   ),
+                  //-------------------------------Sudah Punya Akun? ------------------------
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
                     child: Row(
@@ -168,6 +185,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                   ),
+                  //-------------------------------Sudah Punya Akun? ------------------------
                 ],
               ),
             ),

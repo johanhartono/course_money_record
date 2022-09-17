@@ -4,10 +4,6 @@ import 'package:course_money_record/presentation/page/auth/login_page.dart';
 import 'package:course_money_record/presentation/page/history/history_page.dart';
 import 'package:d_chart/d_chart.dart';
 import 'package:d_view/d_view.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-
 import '../../config/app_asset.dart';
 import '../../config/app_format.dart';
 import '../controller/c_home.dart';
@@ -15,6 +11,10 @@ import '../controller/c_user.dart';
 import 'history/add_history_page.dart';
 import 'history/detail_history_page.dart';
 import 'history/income_outcome_page.dart';
+//
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -139,6 +139,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //--------------------------Drawer Menus-------------------------------------
   Drawer drawer() {
     return Drawer(
       child: ListView(
@@ -260,6 +261,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+  //--------------------------Drawer Menus--------------------------------------
 
   Row monthly(BuildContext context) {
     return Row(

@@ -167,6 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         //-----------------------Belum Punya Akun---------------------------
                         //-----------------------Register-----------------------------------
+                        //dapat dipelajari di https://api.flutter.dev/flutter/widgets/widgets-library.html
                         GestureDetector(
                           onTap: () {
                             Get.to(() => const RegisterPage());
