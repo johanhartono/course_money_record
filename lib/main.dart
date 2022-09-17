@@ -5,8 +5,9 @@ import 'package:course_money_record/presentation/page/auth/login_page.dart';
 import 'package:course_money_record/presentation/page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:io';
 import 'package:intl/date_symbol_data_local.dart';
+//Activate Import below for desktop platform
+//import 'dart:io';
 //import 'package:window_size/window_size.dart';
 //import 'package:window_manager/window_manager.dart';
 

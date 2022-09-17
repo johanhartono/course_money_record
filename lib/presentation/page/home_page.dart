@@ -104,8 +104,11 @@ class _HomePageState extends State<HomePage> {
                         ),
                   ),
                   DView.spaceHeight(),
+                  //--------------------------Card Details--------------------------------------
                   cardToday(context),
+                  //--------------------------Card Details--------------------------------------
                   DView.spaceHeight(30),
+                  //--------------------------Box Decoration------------------------------------
                   Center(
                     child: Container(
                       height: 5,
@@ -116,7 +119,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
+                  //--------------------------Box Decoration------------------------------------
                   DView.spaceHeight(30),
+
                   Text(
                     'Pengeluaran Minggu Ini',
                     style: Theme.of(context).textTheme.headline6!.copyWith(
@@ -124,7 +129,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                   ),
                   DView.spaceHeight(),
+
                   weekly(),
+
                   DView.spaceHeight(30),
                   Text(
                     'Perbandingan Bulan Ini',
@@ -132,7 +139,9 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                         ),
                   ),
+
                   DView.spaceHeight(),
+
                   monthly(context),
                 ],
               ),
