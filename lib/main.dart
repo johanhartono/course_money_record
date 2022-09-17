@@ -7,18 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:io';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:window_size/window_size.dart';
+//import 'package:window_size/window_size.dart';
 //import 'package:window_manager/window_manager.dart';
 
 //References Website : https://blog.codemagic.io/flutter-desktop-apps-intro/
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   //For Deskstop Platform only
-  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+/*   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     //setWindowTitle('Flutter Demo');
     setWindowMinSize(const Size(400, 300));
     setWindowMaxSize(Size.infinite);
-  }
+  } */
   initializeDateFormatting('id_ID').then((value) {
     runApp(const MyApp());
   });

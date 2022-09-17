@@ -16,12 +16,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+//-----------Code by default jangan diganggu--------------------------------
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
+//-----------Code by default jangan diganggu--------------------------------
 
 class _HomePageState extends State<HomePage> {
   final cUser = Get.put(CUser());
@@ -38,6 +40,7 @@ class _HomePageState extends State<HomePage> {
       endDrawer: drawer(),
       body: Column(
         children: [
+          //Row baris paling atas ada profil dan icon hamburger
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 50, 20, 30),
             child: Row(
@@ -85,6 +88,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          //-------------------------------Start Details-----------------------------------------------
           Expanded(
             child: RefreshIndicator(
               onRefresh: () async {
@@ -134,10 +138,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          //-------------------------------End Details-----------------------------------------------
         ],
       ),
     );
   }
+
+  //Separated Widgets or Sub Widgets
 
   //--------------------------Drawer Menus-------------------------------------
   Drawer drawer() {
@@ -209,6 +216,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          //-----------------List Tambah Baru ----------------------------------
           ListTile(
             onTap: () {
               Get.to(() => AddHistoryPage())?.then((value) {
@@ -222,7 +230,9 @@ class _HomePageState extends State<HomePage> {
             title: const Text('Tambah Baru'),
             trailing: const Icon(Icons.navigate_next),
           ),
+          //-----------------List Tambah Baru ----------------------------------
           const Divider(height: 1),
+          //-----------------List Pemasukan ------------------------------------
           ListTile(
             onTap: () {
               Get.to(() => const IncomeOutcomePage(
@@ -234,7 +244,9 @@ class _HomePageState extends State<HomePage> {
             title: const Text('Pemasukan'),
             trailing: const Icon(Icons.navigate_next),
           ),
+          //-----------------List Pemasukan ------------------------------------
           const Divider(height: 1),
+          //-----------------List Pengeluaran ----------------------------------
           ListTile(
             onTap: () {
               Get.to(() => const IncomeOutcomePage(
@@ -246,7 +258,9 @@ class _HomePageState extends State<HomePage> {
             title: const Text('Pengeluaran'),
             trailing: const Icon(Icons.navigate_next),
           ),
+          //-----------------List Pengeluaran ----------------------------------
           const Divider(height: 1),
+          //-----------------List Riwayat --------------------------------------
           ListTile(
             onTap: () {
               Get.to(() => const HistoryPage());
@@ -256,6 +270,7 @@ class _HomePageState extends State<HomePage> {
             title: const Text('Riwayat'),
             trailing: const Icon(Icons.navigate_next),
           ),
+          //-----------------List Riwayat --------------------------------------
           const Divider(height: 1),
         ],
       ),
@@ -263,6 +278,7 @@ class _HomePageState extends State<HomePage> {
   }
   //--------------------------Drawer Menus--------------------------------------
 
+  //--------------------------Monthly Details-----------------------------------
   Row monthly(BuildContext context) {
     return Row(
       children: [
@@ -354,7 +370,9 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
+  //--------------------------Monthly Details-----------------------------------
 
+  //--------------------------Weekly Details------------------------------------
   AspectRatio weekly() {
     return AspectRatio(
       aspectRatio: 16 / 9,
@@ -381,7 +399,9 @@ class _HomePageState extends State<HomePage> {
       }),
     );
   }
+  //--------------------------Weekly Details------------------------------------
 
+  //--------------------------Card Details--------------------------------------
   Material cardToday(BuildContext context) {
     return Material(
       borderRadius: BorderRadius.circular(16),
@@ -448,4 +468,5 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+  //--------------------------Card Details--------------------------------------
 }
