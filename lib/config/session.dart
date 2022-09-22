@@ -16,6 +16,7 @@ class Session {
     Map<String, dynamic> mapUser = user.toJson();
     String stringUser = jsonEncode(mapUser);
     bool success = await pref.setString('user', stringUser);
+    //GetX State Management, dimana data ditampung sementara di state kemudian bisa dipakai hampir di seluruh Front End
     if (success) {
       final cUser = Get.put(CUser());
       cUser.setData(user);
