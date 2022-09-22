@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 //Coding disini adalah standar
 //Fungsi class AppRequest adalah untuk POST dan GET Passing Parameter melalui
-//JSON
+//JSON format
 class AppRequest {
   static Future<Map?> gets(String url, {Map<String, String>? headers}) async {
     try {
