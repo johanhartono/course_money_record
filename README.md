@@ -15,6 +15,11 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+Fix errors:
+run inside folder rootproject
+git config --global url.https://github.com/.insteadOf git://github.com/
+start ms-settings:developers
+
 Alur Kerja Aplikasi:
 Back End (menggunakan mysql dan php)
 predefined script query my sql create,insert,update,delete
