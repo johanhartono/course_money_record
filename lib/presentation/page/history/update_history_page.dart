@@ -29,6 +29,7 @@ class _UpdateHistoryPageState extends State<UpdateHistoryPage> {
   final controllerName = TextEditingController();
   final controllerPrice = TextEditingController();
 
+//----------------Function Update History--------------------------------
   updateHistory() async {
     bool success = await SourceHistory.update(
       widget.idHistory,
@@ -44,6 +45,7 @@ class _UpdateHistoryPageState extends State<UpdateHistoryPage> {
       });
     }
   }
+//----------------Function Update History--------------------------------
 
   @override
   void initState() {
@@ -54,10 +56,15 @@ class _UpdateHistoryPageState extends State<UpdateHistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //----------------Title/AppBar Update-------------------------------------
       appBar: DView.appBarLeft('Update'),
+      //----------------Title/AppBar Update-------------------------------------
+
+      //---------------- Entire Body ListView----------------------------------
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          //---------------- Date Selection----------------------------------
           const Text(
             'Tanggal',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -86,12 +93,15 @@ class _UpdateHistoryPageState extends State<UpdateHistoryPage> {
               ),
             ],
           ),
+          //---------------- Date Selection----------------------------------
           DView.spaceHeight(),
+
           const Text(
             'Tipe',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           DView.spaceHeight(4),
+          //---------------- Combo Pemasukan/Pengeluaran----------------------
           Obx(() {
             return DropdownButtonFormField(
               value: cUpdateHistory.type,
@@ -110,20 +120,25 @@ class _UpdateHistoryPageState extends State<UpdateHistoryPage> {
               ),
             );
           }),
+          //---------------- Combo Pemasukan/Pengeluaran----------------------
           DView.spaceHeight(),
+          //---------------- Input Text Sumber/Jualan -----------------------
           DInput(
             controller: controllerName,
             hint: 'Jualan',
             title: 'Sumber/Objek Pengeluaran',
           ),
           DView.spaceHeight(),
+
           DInput(
             controller: controllerPrice,
             hint: '30000',
             title: 'Harga',
             inputType: TextInputType.number,
           ),
+          //---------------- Input Text Sumber/Jualan -----------------------
           DView.spaceHeight(),
+          //---------------- Button Tambah Items------ -----------------------
           ElevatedButton(
             onPressed: () {
               cUpdateHistory.addItem({
@@ -135,7 +150,9 @@ class _UpdateHistoryPageState extends State<UpdateHistoryPage> {
             },
             child: const Text('Tambah ke Items'),
           ),
+          //---------------- Button Tambah Items------ -----------------------
           DView.spaceHeight(),
+          //---------------- Dekorasi pemisah --------- -----------------------
           Center(
             child: Container(
               height: 5,
@@ -146,7 +163,9 @@ class _UpdateHistoryPageState extends State<UpdateHistoryPage> {
               ),
             ),
           ),
+          //---------------- Dekorasi pemisah --------- -----------------------
           DView.spaceHeight(),
+          //---------------- Listing added Items------ -----------------------
           const Text(
             'Items',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -172,7 +191,9 @@ class _UpdateHistoryPageState extends State<UpdateHistoryPage> {
               );
             }),
           ),
+          //---------------- Listing added Items------ -----------------------
           DView.spaceHeight(),
+          //---------------- Total Harga--------------------------------------
           Row(
             children: [
               const Text(
@@ -191,7 +212,9 @@ class _UpdateHistoryPageState extends State<UpdateHistoryPage> {
               }),
             ],
           ),
+          //---------------- Total Harga--------------------------------------
           DView.spaceHeight(30),
+          //---------------- Tombol Submit-------------------------------------
           Material(
             color: AppColor.primary,
             borderRadius: BorderRadius.circular(8),
@@ -211,8 +234,10 @@ class _UpdateHistoryPageState extends State<UpdateHistoryPage> {
               ),
             ),
           )
+          //---------------- Tombol Submit-------------------------------------
         ],
       ),
+      //---------------- Entire Body ListView----------------------------------
     );
   }
 }

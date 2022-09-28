@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:course_money_record/config/app_format.dart';
 import 'package:d_view/d_view.dart';
+import '../../../config/app_color.dart';
+import '../../controller/history/c_detail_history.dart';
+//
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
-import '../../../config/app_color.dart';
-import '../../controller/history/c_detail_history.dart';
 
 class DetailHistoryPage extends StatefulWidget {
   const DetailHistoryPage(
@@ -33,6 +33,7 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //---------------- Title/AppBar Riwayat Details-------------------------------------
       appBar: AppBar(
         titleSpacing: 0,
         title: Obx(() {
@@ -52,6 +53,9 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
           );
         }),
       ),
+      //---------------- Title/AppBar Riwayat Details-------------------------------------
+
+      //---------------- Entire Body--------------------------------------------
       body: GetBuilder<CDetailHistory>(builder: (_) {
         if (_.data.date == null) {
           String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
@@ -61,9 +65,11 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
 
           return DView.nothing();
         }
+        //---------------- Listing Records--------------------------------------
         List details = jsonDecode(_.data.details!);
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          //---------------- Record Heading-------------------------------------
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
@@ -85,6 +91,9 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
                     ),
               ),
             ),
+            //---------------- Record Heading-------------------------------------
+
+            //---------------- Separator Decoration-------------------------------------
             Center(
               child: Container(
                 height: 5,
@@ -95,7 +104,9 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
                 ),
               ),
             ),
+            //---------------- Separator Decoration-------------------------------------
             DView.spaceHeight(20),
+
             Expanded(
               child: ListView.separated(
                 itemCount: details.length,
@@ -111,21 +122,27 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
                     padding: const EdgeInsets.all(16),
                     child: Row(
                       children: [
+                        //---------------- Index Record No-------------------------------------
                         Text(
                           '${index + 1}.',
                           style: const TextStyle(fontSize: 20),
                         ),
+                        //---------------- Index Record No-------------------------------------
                         DView.spaceWidth(8),
+                        //---------------- Index Record No-------------------------------------
                         Expanded(
                           child: Text(
                             item['name'],
                             style: const TextStyle(fontSize: 20),
                           ),
                         ),
+                        //---------------- Index Record Descr-------------------------------------
+                        //---------------- Index Record Price-------------------------------------
                         Text(
                           AppFormat.currency(item['price']),
                           style: const TextStyle(fontSize: 20),
                         ),
+                        //---------------- Index Record Price-------------------------------------
                       ],
                     ),
                   );
@@ -134,7 +151,9 @@ class _DetailHistoryPageState extends State<DetailHistoryPage> {
             ),
           ],
         );
+        //---------------- Listing Records--------------------------------------
       }),
+      //---------------- Entire Body--------------------------------------------
     );
   }
 }

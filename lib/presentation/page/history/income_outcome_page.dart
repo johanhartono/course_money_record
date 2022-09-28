@@ -3,15 +3,15 @@ import 'package:course_money_record/data/source/source_history.dart';
 import 'package:course_money_record/presentation/page/history/update_history_page.dart';
 import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-
 import '../../../config/app_color.dart';
 import '../../../data/model/history.dart';
 import '../../controller/c_user.dart';
 import '../../controller/history/c_income_outcome.dart';
 import 'detail_history_page.dart';
+//
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class IncomeOutcomePage extends StatefulWidget {
   const IncomeOutcomePage({Key? key, required this.type}) : super(key: key);
@@ -25,11 +25,13 @@ class _IncomeOutcomePageState extends State<IncomeOutcomePage> {
   final cInOut = Get.put(CIncomeOutcome());
   final cUser = Get.put(CUser());
   final controllerSearch = TextEditingController();
-
+//---------------- Function Refresh-------------------------------------------
   refresh() {
     cInOut.getList(cUser.data.idUser, widget.type);
   }
+//---------------- Function Refresh-------------------------------------------
 
+//---------------- Function Menu Options----------------------------------------
   menuOption(String value, History history) async {
     if (value == 'update') {
       Get.to(() => UpdateHistoryPage(
@@ -52,6 +54,7 @@ class _IncomeOutcomePageState extends State<IncomeOutcomePage> {
       }
     }
   }
+//---------------- Function Menu Options----------------------------------------
 
   @override
   void initState() {
@@ -62,11 +65,12 @@ class _IncomeOutcomePageState extends State<IncomeOutcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //---------------- Title/AppBar Pemasukan/Pengeluaran -------------------
       appBar: AppBar(
         titleSpacing: 0,
         title: Row(
           children: [
-            Text(widget.type),
+            Text(widget.type), //switch between Pengeluaran/Pemasukan
             Expanded(
               child: Container(
                 height: 40,
@@ -117,6 +121,9 @@ class _IncomeOutcomePageState extends State<IncomeOutcomePage> {
           ],
         ),
       ),
+      //---------------- Title/AppBar Pemasukan/Pengeluaran -------------------
+
+      //---------------- Entire Body ----------------------------------------------
       body: GetBuilder<CIncomeOutcome>(builder: (_) {
         if (_.loading) return DView.loadingCircle();
         if (_.list.isEmpty) return DView.empty('Kosong');
@@ -126,6 +133,7 @@ class _IncomeOutcomePageState extends State<IncomeOutcomePage> {
             itemCount: _.list.length,
             itemBuilder: (context, index) {
               History history = _.list[index];
+              //---------------- Listing Records Cards--------------------------
               return Card(
                 elevation: 4,
                 margin: EdgeInsets.fromLTRB(
@@ -165,6 +173,7 @@ class _IncomeOutcomePageState extends State<IncomeOutcomePage> {
                           textAlign: TextAlign.end,
                         ),
                       ),
+                      //---------------- Pop UpMenu--------------------------------------
                       PopupMenuButton<String>(
                         itemBuilder: (context) => [
                           const PopupMenuItem(
@@ -174,14 +183,17 @@ class _IncomeOutcomePageState extends State<IncomeOutcomePage> {
                         ],
                         onSelected: (value) => menuOption(value, history),
                       ),
+                      //---------------- Pop UpMenu--------------------------------------
                     ],
                   ),
                 ),
               );
+              //---------------- Listing Records Cards--------------------------
             },
           ),
         );
       }),
+      //---------------- Entire Body ----------------------------------------------
     );
   }
 }

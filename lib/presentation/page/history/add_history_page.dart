@@ -16,9 +16,11 @@ class AddHistoryPage extends StatelessWidget {
   AddHistoryPage({Key? key}) : super(key: key);
   final cAddHistory = Get.put(CAddHistory());
   final cUser = Get.put(CUser());
+  //
   final controllerName = TextEditingController();
   final controllerPrice = TextEditingController();
 
+  //----------------Function Add History Data--------------------------------
   addHistory() async {
     bool success = await SourceHistory.add(
       cUser.data.idUser!,
@@ -28,19 +30,27 @@ class AddHistoryPage extends StatelessWidget {
       cAddHistory.total.toString(),
     );
     if (success) {
+      //----------------Fungsi Delayed--------------------------------------
       Future.delayed(const Duration(milliseconds: 3000), () {
         Get.back(result: true);
       });
+      //----------------Fungsi Delayed--------------------------------------
     }
   }
+  //----------------Function Add History Data--------------------------------
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //----------------Title/App Bar--------------------------------------
       appBar: DView.appBarLeft('Tambah Baru'),
+      //----------------Title/App Bar---------------------------------------
+
+      //---------------- Entire Body ListView----------------------------------
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          //---------------- Date Selection----------------------------------
           const Text(
             'Tanggal',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -60,8 +70,10 @@ class AddHistoryPage extends StatelessWidget {
                     lastDate: DateTime(DateTime.now().year + 1),
                   );
                   if (result != null) {
+                    //---------------- Isikan value date ke controller----------
                     cAddHistory
                         .setDate(DateFormat('yyyy-MM-dd').format(result));
+                    //---------------- Isikan value date ke controller----------
                   }
                 },
                 icon: const Icon(Icons.event),
@@ -69,7 +81,10 @@ class AddHistoryPage extends StatelessWidget {
               ),
             ],
           ),
+          //---------------- Date Selection----------------------------------
           DView.spaceHeight(),
+          //---------------- Date Selection----------------------------------
+          //---------------- Combo Tipe transaksi----------------------------
           const Text(
             'Tipe',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -93,20 +108,25 @@ class AddHistoryPage extends StatelessWidget {
               ),
             );
           }),
+          //---------------- Combo Tipe transaksi----------------------------
           DView.spaceHeight(),
+          //---------------- Input Text Sumber/Jualan -----------------------
           DInput(
             controller: controllerName,
             hint: 'Jualan',
             title: 'Sumber/Objek Pengeluaran',
           ),
           DView.spaceHeight(),
+          //---------------- Input Text Sumber/Jualan -----------------------
           DInput(
             controller: controllerPrice,
             hint: '30000',
             title: 'Harga',
             inputType: TextInputType.number,
           ),
+          //---------------- Input Text Sumber/Jualan -----------------------
           DView.spaceHeight(),
+          //---------------- Button Tambah Items------ -----------------------
           ElevatedButton(
             onPressed: () {
               cAddHistory.addItem({
@@ -118,7 +138,9 @@ class AddHistoryPage extends StatelessWidget {
             },
             child: const Text('Tambah ke Items'),
           ),
+          //---------------- Button Tambah Items------ -----------------------
           DView.spaceHeight(),
+          //---------------- Dekorasi pemisah --------- -----------------------
           Center(
             child: Container(
               height: 5,
@@ -129,7 +151,9 @@ class AddHistoryPage extends StatelessWidget {
               ),
             ),
           ),
+          //---------------- Dekorasi emusah --------- -----------------------
           DView.spaceHeight(),
+          //---------------- Listing added Items------ -----------------------
           const Text(
             'Items',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -155,7 +179,9 @@ class AddHistoryPage extends StatelessWidget {
               );
             }),
           ),
+          //---------------- Listing added Items------ -----------------------
           DView.spaceHeight(),
+          //---------------- Total Harga--------------------------------------
           Row(
             children: [
               const Text(
@@ -174,7 +200,9 @@ class AddHistoryPage extends StatelessWidget {
               }),
             ],
           ),
+          //---------------- Total Harga--------------------------------------
           DView.spaceHeight(30),
+          //---------------- Tombol Submit-------------------------------------
           Material(
             color: AppColor.primary,
             borderRadius: BorderRadius.circular(8),
@@ -194,8 +222,10 @@ class AddHistoryPage extends StatelessWidget {
               ),
             ),
           )
+          //---------------- Tombol Submit-------------------------------------
         ],
       ),
+      //---------------- Entire Body ListView----------------------------------
     );
   }
 }

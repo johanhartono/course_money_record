@@ -24,10 +24,13 @@ class _HistoryPageState extends State<HistoryPage> {
   final cUser = Get.put(CUser());
   final controllerSearch = TextEditingController();
 
+//---------------- Function Refresh-------------------------------------------
   refresh() {
     cHistory.getList(cUser.data.idUser);
   }
+//---------------- Function Refresh-------------------------------------------
 
+//---------------- Delete Function ------------------------------------------
   delete(String idHistory) async {
     bool yes = await DInfo.dialogConfirmation(
       context,
@@ -42,6 +45,8 @@ class _HistoryPageState extends State<HistoryPage> {
     }
   }
 
+//---------------- Delete Function ---------------------------------------------
+
   @override
   void initState() {
     refresh();
@@ -51,6 +56,7 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //---------------- Title/AppBar Riwayat -------------------------------------
       appBar: AppBar(
         titleSpacing: 0,
         title: Row(
@@ -60,6 +66,7 @@ class _HistoryPageState extends State<HistoryPage> {
               child: Container(
                 height: 40,
                 margin: const EdgeInsets.all(16),
+                //---------------- Date Input with borderRadius Circle-----------------------------
                 child: TextField(
                   controller: controllerSearch,
                   onTap: () async {
@@ -74,6 +81,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           DateFormat('yyyy-MM-dd').format(result);
                     }
                   },
+
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
@@ -97,6 +105,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     hintText: '2022-06-01',
                     hintStyle: const TextStyle(color: Colors.white),
                   ),
+                  //---------------- Date Input with borderRadius Circle-----------------------------
                   textAlignVertical: TextAlignVertical.center,
                   style: const TextStyle(color: Colors.white),
                 ),
@@ -105,6 +114,9 @@ class _HistoryPageState extends State<HistoryPage> {
           ],
         ),
       ),
+      //---------------- Title/AppBar Riwayat -------------------------------------
+
+      //---------------- Entire Body ----------------------------------------------
       body: GetBuilder<CHistory>(builder: (_) {
         if (_.loading) return DView.loadingCircle();
         if (_.list.isEmpty) return DView.empty('Kosong');
@@ -114,6 +126,7 @@ class _HistoryPageState extends State<HistoryPage> {
             itemCount: _.list.length,
             itemBuilder: (context, index) {
               History history = _.list[index];
+              //---------------- data Listing With Card ------------------------
               return Card(
                 elevation: 4,
                 margin: EdgeInsets.fromLTRB(
@@ -166,10 +179,12 @@ class _HistoryPageState extends State<HistoryPage> {
                   ),
                 ),
               );
+              //---------------- data Listing With Card ------------------------
             },
           ),
         );
       }),
+      //---------------- Entire Body ----------------------------------------------
     );
   }
 }
