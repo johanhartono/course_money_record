@@ -21,7 +21,7 @@ git config --global url.https://github.com/.insteadOf git://github.com/
 start ms-settings:developers
 
 Alur Kerja Aplikasi:
-Back End (menggunakan mysql dan php)
+Back End (menggunakan XAMPP mysql dan php)
 predefined script query my sql create,insert,update,delete
 
 Front End (menggunakan flutter)
@@ -33,11 +33,10 @@ https://app.quicktype.io/
 Widget FutureBuilder memanggil fungsi Session.getUser() dari folder lib\config\session.dart
 session.dart memanggil data model di folder lib\model\user.dart dan passing value ke  controller di folder presentation\controller\c_user.dart
 
-main.dart akan  mengecek session user dan password apakah terisi atau kosong, apabila sudah terisi makan sistem akan mengarahkan ke
-halaman homepage.dart apabila tidak maka akan ke halaman login.dart
+main.dart akan  mengecek session user dan password apakah terisi atau kosong, apabila sudah terisi makan sistem akan mengarahkan ke halaman homepage.dart apabila tidak maka akan ke halaman login.dart
 
-session.dart =>Menggunakan sharedpreferenes untuk simpan data secara local
-c_user.dart = > mengelora perputaran data dalam aplikasi
+session.dart => Menggunakan sharedpreferenes untuk simpan data secara local
+c_user.dart  => mengelora perputaran data dalam aplikasi
 
 2. Login.Dart
 memanggil lib\data\source\source_user.dart (untuk passing paramater dari textbox UI) , kemudian memanggil lib\api\app_request.dart (post or get pass data json ke backend php)

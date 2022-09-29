@@ -18,8 +18,10 @@ class Session {
     bool success = await pref.setString('user', stringUser);
     //GetX State Management, dimana data ditampung sementara di state kemudian bisa dipakai hampir di seluruh Front End
     if (success) {
+      //---------------------------------------------------------------------------
       final cUser = Get.put(CUser());
       cUser.setData(user);
+      //---------------------------------------------------------------------------
     }
     return success;
   }
@@ -34,8 +36,10 @@ class Session {
       Map<String, dynamic> mapUser = jsonDecode(stringUser);
       user = User.fromJson(mapUser);
     }
+    //---------------------------------------------------------------------------
     final cUser = Get.put(CUser());
     cUser.setData(user);
+    //---------------------------------------------------------------------------
     return user;
   }
 
@@ -43,8 +47,10 @@ class Session {
   static Future<bool> clearUser() async {
     final pref = await SharedPreferences.getInstance();
     bool success = await pref.remove('user');
+    //---------------------------------------------------------------------------
     final cUser = Get.put(CUser());
     cUser.setData(User());
+    //---------------------------------------------------------------------------
     return success;
   }
 }
