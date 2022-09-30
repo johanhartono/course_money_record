@@ -19,8 +19,8 @@ class SourceHistory {
         'yesterday': 0.0,
         'week': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         'month': {
-          'income': 0.0,
-          'outcome': 0.0,
+        'income': 0.0,
+        'outcome': 0.0,
         }
       };
     }
@@ -29,7 +29,7 @@ class SourceHistory {
   }
 
   static Future<bool> add(String idUser, String date, String type,
-      String details, String total) async {
+    String details, String total) async {
     String url = '${Api.history}/add.php';
     Map? responseBody = await AppRequest.post(url, {
       'id_user': idUser,
@@ -60,7 +60,7 @@ class SourceHistory {
   }
 
   static Future<bool> update(String idHistory, String idUser, String date,
-      String type, String details, String total) async {
+    String type, String details, String total) async {
     String url = '${Api.history}/update.php';
     Map? responseBody = await AppRequest.post(url, {
       'id_history': idHistory,
@@ -117,7 +117,7 @@ class SourceHistory {
   }
 
   static Future<List<History>> incomeOutcomeSearch(
-      String idUser, String type, String date) async {
+    String idUser, String type, String date) async {
     String url = '${Api.history}/income_outcome_search.php';
     Map? responseBody = await AppRequest.post(url, {
       'id_user': idUser,
@@ -186,7 +186,7 @@ class SourceHistory {
   }
 
   static Future<History?> detail(
-      String idUser, String date, String type) async {
+    String idUser, String date, String type) async {
     String url = '${Api.history}/detail.php';
     Map? responseBody = await AppRequest.post(url, {
       'id_user': idUser,
