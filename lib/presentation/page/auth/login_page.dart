@@ -31,12 +31,12 @@ class _LoginPageState extends State<LoginPage> {
     //If the user submits incorrect information, display a friendly error message letting them
     //know what went wrong
     if (formKey.currentState!.validate()) {
-      //-----------------------Passing ke source_user.date--------------------------------------
+      //-----------------------Passing ke source_user.dart--------------------------------------
       bool success = await SourceUser.login(
         controllerEmail.text,
         controllerPassword.text,
       );
-      //-----------------------Passing ke source_user.date--------------------------------------
+      //-----------------------Passing ke source_user.dart--------------------------------------
       
       if (success) {
         DInfo.dialogSuccess('Berhasil Login');
