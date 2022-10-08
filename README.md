@@ -16,9 +16,13 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 Fix errors:
+1. Access denied to github.com
 run inside folder rootproject
 git config --global url.https://github.com/.insteadOf git://github.com/
 start ms-settings:developers
+
+2. IN Flutter Web getting 'XMLHttpRequest' error while making HTTP call
+flutter run -d chrome --web-renderer html
 
 Alur Kerja Aplikasi:
 Back End (menggunakan XAMPP mysql dan php)

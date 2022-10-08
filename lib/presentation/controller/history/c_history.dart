@@ -10,6 +10,7 @@ class CHistory extends GetxController {
   bool get loading => _loading.value;
 
   final _list = <History>[].obs;
+  // ignore: invalid_use_of_protected_member
   List<History> get list => _list.value;
 
   getList(idUser) async {
