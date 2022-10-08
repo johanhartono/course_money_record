@@ -1,5 +1,9 @@
 <?php
 include '../connection.php';
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+//header("Access-Control-Allow-Headers: X-Requested-With");
+header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Cache-Control, Pragma, Authorization, Accept, Accept-Encoding");
 
 $email = $_POST['email'];
 
@@ -17,16 +21,17 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $user[] = $row;
     }
-    echo $sql;
-    echo json_encode(array(
+        //echo $sql;
+        echo json_encode(array(
         "success" => true,
         "data" => $user[0]    
     ));
     
 } else {
-    echo $sql;
+     
      echo json_encode(array(
         "success" => false
     ));
 
 }
+
