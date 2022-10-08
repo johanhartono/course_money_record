@@ -24,6 +24,12 @@ start ms-settings:developers
 2. IN Flutter Web getting 'XMLHttpRequest' error while making HTTP call
 flutter run -d chrome --web-renderer html
 
+3. XMLHttpRequest
+ https://stackoverflow.com/questions/8719276/cross-origin-request-headerscors-with-php-headers
+this should work put inside API Php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Cache-Control, Pragma, Authorization, Accept, Accept-Encoding");
+
 Alur Kerja Aplikasi:
 Back End (menggunakan XAMPP mysql dan php)
 predefined script query my sql create,insert,update,delete
